@@ -17,4 +17,8 @@ export class GalleryComponent {
     { id: '5', url: 'https://picsum.photos/id/50/400/300', alt: 'Desierto' },
     { id: '6', url: 'https://picsum.photos/id/60/400/300', alt: 'Lago' },
   ]);
+
+  onDeleteImage(id: string) {
+    this.images.update(imgs => imgs.filter(img => img.id !== id));
+  }
 }

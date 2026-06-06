@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { Image } from '../models/image.interface';
 
 @Component({
@@ -11,4 +11,11 @@ import { Image } from '../models/image.interface';
 export class ImageItemComponent {
   image = input.required<Image>();
   isFeatured = input<boolean>(false);
+
+  deleteImage = output<string>();
+
+  onDelete(event: Event) {
+    event.stopPropagation();
+    this.deleteImage.emit(this.image().id);
+  }
 }

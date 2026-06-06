@@ -4,6 +4,7 @@
       <app-image-item
         [image]="image"
         [isFeatured]="i === 0"
+        (deleteImage)="onDeleteImage($event)"
       />
     </div>
   }

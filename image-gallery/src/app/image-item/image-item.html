@@ -1,7 +1,13 @@
-<div class="relative overflow-hidden rounded-lg w-full h-full">
+<div class="group relative overflow-hidden rounded-lg w-full" style="height: 150px;">
   <img 
     [src]="image().url" 
     [alt]="image().alt"
     class="w-full h-full object-cover"
   />
+  <button 
+    (click)="onDelete($event)"
+    class="absolute top-2 right-2 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+    aria-label="Eliminar imagen">
+    ✕
+  </button>
 </div>
