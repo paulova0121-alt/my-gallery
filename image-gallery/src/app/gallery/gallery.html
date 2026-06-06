@@ -1,0 +1,8 @@
+<div>
+  @for (image of images(); track image.id; let i = $index) {
+    <app-image-item
+      [image]="image"
+      [isFeatured]="i === 0"
+    />
+  }
+</div>
