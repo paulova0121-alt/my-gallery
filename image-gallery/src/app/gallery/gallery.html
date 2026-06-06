@@ -1,3 +1,14 @@
+@if (hasSelection()) {
+  <div class="flex items-center gap-4 p-4 bg-blue-50 border-b border-blue-200">
+    <span class="text-blue-700 text-sm">{{ selectionCount() }} imagen(es) seleccionada(s)</span>
+    <button 
+      (click)="deleteSelected()"
+      class="bg-red-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">
+      Eliminar seleccionadas
+    </button>
+  </div>
+}
+
 <div 
   cdkDropList 
   (cdkDropListDropped)="onDrop($event)"
@@ -7,7 +18,9 @@
       <app-image-item
         [image]="image"
         [isFeatured]="i === 0"
+        [isSelected]="selectedIds().has(image.id)"
         (deleteImage)="onDeleteImage($event)"
+        (selectImage)="toggleSelection($event)"
       />
     </div>
   }
