@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { Image } from '../models/image.interface';
 import { ImageItemComponent } from '../image-item/image-item';
+import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-gallery',
-  imports: [ImageItemComponent],
+  imports: [ImageItemComponent, DragDropModule],
   templateUrl: './gallery.html',
   styleUrl: './gallery.css'
 })
@@ -20,5 +21,11 @@ export class GalleryComponent {
 
   onDeleteImage(id: string) {
     this.images.update(imgs => imgs.filter(img => img.id !== id));
+  }
+
+  onDrop(event: CdkDragDrop<Image[]>) {
+    const newOrder = [...this.images()];
+    moveItemInArray(newOrder, event.previousIndex, event.currentIndex);
+    this.images.set(newOrder);
   }
 }

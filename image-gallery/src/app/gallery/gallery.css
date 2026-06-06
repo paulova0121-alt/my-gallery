@@ -1,0 +1,12 @@
+.cdk-drag-preview {
+  opacity: 0.8;
+  border-radius: 8px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}
+
+.cdk-drag-animating {
+  transition: transform 200ms;
+}
